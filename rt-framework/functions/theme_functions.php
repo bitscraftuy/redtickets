@@ -2697,17 +2697,17 @@ function updateCupoTalleres(){
 
 						//$res = $wpdb->query($wpdb->prepare("UPDATE wp_ebp_talleres SET cupo = '$newCupo' WHERE schedule='$schedule' AND name='$name'; "));
 
-						if($talleres[$i]['schedule'] == $obj->s9 && $talleres[$i]['name'] == $obj->v9)
+						if($talleres[$i]['schedule'] == $obj->s9 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v9)))
 							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $newCupo),array('schedule'=>$obj->s9,'name'=>$obj->v9),array('%s'));
 
 
-						if($talleres[$i]['schedule'] == $obj->s11 && $talleres[$i]['name'] == $obj->v11)
+						if($talleres[$i]['schedule'] == $obj->s11 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v11)))
 							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $newCupo),array('schedule'=>$obj->s11,'name'=>$obj->v11),array('%s'));
 
-						if($talleres[$i]['schedule'] == $obj->s14 && $talleres[$i]['name'] == $obj->v14)
+						if($talleres[$i]['schedule'] == $obj->s14 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v14)))
 							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $newCupo),array('schedule'=>$obj->s14,'name'=>$obj->v14),array('%s'));
 
-						if($talleres[$i]['schedule'] == $obj->s16 && $talleres[$i]['name'] == $obj->v16)
+						if($talleres[$i]['schedule'] == $obj->s16 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v16)))
 							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $newCupo),array('schedule'=>$obj->s16,'name'=>$obj->v16),array('%s'));
 					}
 
@@ -2715,51 +2715,82 @@ function updateCupoTalleres(){
 
 				case 4: // 1 ticket 2 dias
 
-					for($i = 0; $i < count($tals);$i++){
+					for($i = 0; $i < count($talleres);$i++){
 
-						$current = (int)$tal[$i]['cupo'];
-						$current2 = (int)$tal[$i]['cupo2'];
+						$current = (int)$talleres[$i]['cupo'];
+						$current2 = (int)$talleres[$i]['cupo2'];
 						$cupo = $current-1;
 						$cupo2 = $current2-1;
 
-						$res = $wpdb->query('UPDATE wp_ebp_talleres SET cupo = '.$cupo.', cupo2 = '.$cupo2.' WHERE schedule="'.$obj->s9.'" AND name="'.$obj->v9.'";');
-						//$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo, 'cupo2' => $cupo2),array('schedule'=>$obj->s9,'name'=>$obj->v9));
+						//exit( var_dump( $obj) );
+
+						if($talleres[$i]['schedule'] == $obj->s9 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v9)))
+							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo, 'cupo2' => $cupo2),array('schedule'=>$obj->s9,'name'=>$obj->v9),array('%s','%s'));
+
+						if($talleres[$i]['schedule'] == $obj->s11 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v11)))
+							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo, 'cupo2' => $cupo2),array('schedule'=>$obj->s11,'name'=>$obj->v11),array('%s','%s'));
+
+						if($talleres[$i]['schedule'] == $obj->s14 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v14)))
+							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo, 'cupo2' => $cupo2),array('schedule'=>$obj->s14,'name'=>$obj->v14),array('%s','%s'));
+
+						if($talleres[$i]['schedule'] == $obj->s16 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v16)))
+							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo, 'cupo2' => $cupo2),array('schedule'=>$obj->s16,'name'=>$obj->v16),array('%s','%s'));
 
 					}
+
+					
+
 				break;
 
 				case 5: // 2 tickets 1 dia
 
-					for($i = 0; $i < count($tal);$i++){
+					for($i = 0; $i < count($talleres);$i++){
 
-						$current = (int)$tal[$i]['cupo'];
+						$current = (int)$talleres[$i]['cupo'];
 						$cupo = $current-2;
 
-						$res = $wpdb->query('UPDATE wp_ebp_talleres SET cupo = '.$cupo.' WHERE schedule="'.$obj->s9.'" AND name="'.$obj->v9.'";');
+						if($talleres[$i]['schedule'] == $obj->s9 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v9)))
+						
+							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo),array('schedule'=>$obj->s9,'name'=>$obj->v9),array('%s'));
 
-						//$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo),array('schedule'=>$obj->s9,'name'=>$obj->v9));
+						if($talleres[$i]['schedule'] == $obj->s11 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v11)))
+							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo),array('schedule'=>$obj->s11,'name'=>$obj->v11),array('%s'));
+
+						if($talleres[$i]['schedule'] == $obj->s14 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v14)))
+							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo),array('schedule'=>$obj->s14,'name'=>$obj->v14),array('%s'));
+
+						if($talleres[$i]['schedule'] == $obj->s16 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v16)))
+							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo),array('schedule'=>$obj->s16,'name'=>$obj->v16),array('%s'));
 					}
 
 				break;
 				case 6: // 2 tickets 2 dias
 
-					for($i = 0; $i < count($tal);$i++){
+					for($i = 0; $i < count($talleres);$i++){
 
-						$current = (int)$tal[$i]['cupo'];
-						$current2 = (int)$tal[$i]['cupo2'];
+						$current = (int)$talleres[$i]['cupo'];
+						$current2 = (int)$talleres[$i]['cupo2'];
 						$cupo = $current-2;
 						$cupo2 = $current2-2;
 
-					$res = $wpdb->query('UPDATE wp_ebp_talleres SET cupo = '.$cupo.', cupo2 = '.$cupo2.' WHERE schedule="'.$obj->s9.'" AND name="'.$obj->v9.'";');
+						if($talleres[$i]['schedule'] == $obj->s9 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v9)))
+							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo, 'cupo2' => $cupo2),array('schedule'=>$obj->s9,'name'=>$obj->v9),array('%s','%s'));
 
-						//$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo, 'cupo2' => $cupo2),array('schedule'=>$obj->s9,'name'=>$obj->v9));
+						if($talleres[$i]['schedule'] == $obj->s11 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v11)))
+							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo, 'cupo2' => $cupo2),array('schedule'=>$obj->s11,'name'=>$obj->v11),array('%s','%s'));
+
+						if($talleres[$i]['schedule'] == $obj->s14 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v14)))
+							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo, 'cupo2' => $cupo2),array('schedule'=>$obj->s14,'name'=>$obj->v14),array('%s','%s'));
+
+						if($talleres[$i]['schedule'] == $obj->s16 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v16)))
+							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo, 'cupo2' => $cupo2),array('schedule'=>$obj->s16,'name'=>$obj->v16),array('%s','%s'));
 					}
 
 				break;
 			}	
 		
 
-		exit( var_dump( $wpdb->last_query ) );
+		//exit( var_dump( $wpdb->last_query ) );
 	
 
 	echo json_encode($res);

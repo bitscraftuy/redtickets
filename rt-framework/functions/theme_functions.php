@@ -2699,6 +2699,16 @@ function updateCupoTalleres(){
 
 						if($talleres[$i]['schedule'] == $obj->s9 && $talleres[$i]['name'] == $obj->v9)
 							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $newCupo),array('schedule'=>$obj->s9,'name'=>$obj->v9),array('%s'));
+
+
+						if($talleres[$i]['schedule'] == $obj->s11 && $talleres[$i]['name'] == $obj->v11)
+							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $newCupo),array('schedule'=>$obj->s11,'name'=>$obj->v11),array('%s'));
+
+						if($talleres[$i]['schedule'] == $obj->s14 && $talleres[$i]['name'] == $obj->v14)
+							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $newCupo),array('schedule'=>$obj->s14,'name'=>$obj->v14),array('%s'));
+
+						if($talleres[$i]['schedule'] == $obj->s16 && $talleres[$i]['name'] == $obj->v16)
+							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $newCupo),array('schedule'=>$obj->s16,'name'=>$obj->v16),array('%s'));
 					}
 
 				break;

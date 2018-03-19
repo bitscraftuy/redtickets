@@ -1672,6 +1672,8 @@ function listar(){
       		var counter = 1;
 
       		var parentContainer;
+      		var eventID = jQuery('input[name="eventID"]').val();
+      		//console.log(eventID);
 
       		jQuery.each(talleres, function(index, taller){
 
@@ -1683,7 +1685,13 @@ function listar(){
 
       					if(item.innerText.toLowerCase().trim() == taller.name.toLowerCase().trim()){
 
-      						var newContent = '<span>'+item.innerText+' '+'('+taller.cupo+')</span>';
+      						if(eventID == 4 || eventID == 6){
+      							var newContent = '<span>'+item.innerText+' '+'('+taller.cupo+' - '+taller.cupo2+')</span>';
+      						}else{
+      							var newContent = '<span>'+item.innerText+' '+'('+taller.cupo+')</span>';
+      						}
+
+      						
       						item.innerHTML = newContent;
       					}
 
@@ -1694,30 +1702,7 @@ function listar(){
       }
   });
 
-  function updateCupo(s9,s11,s14,s16){
-
-  	jQuery.ajax({
-      type:"POST",
-      url: "/wp-admin/admin-ajax.php",
-      data: { 
-          action: "update_cupo",
-          s9:s9,
-          s11:s11,
-          s14:s14,
-          s16:s16
-
-          
-      },
-      success: function (data) {
-
-
-      		console.log("updatecupo",data);
-
-      }
-  });
-
-  }
-
+  
 
  
 }

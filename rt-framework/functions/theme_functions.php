@@ -2673,13 +2673,15 @@ function updateCupoTalleres(){
 	$wpdb->flush();
 	$obj = (object) $_POST;
 
+
+
 	$queryStr = "SELECT * FROM wp_ebp_talleres";
 	$talleres = $wpdb->get_results($queryStr, ARRAY_A );
 	$res = '';
 	$cupo = 0;
 	$cupo2 = 0;
 
-
+	//var_dump($obj);
 	
 
 			switch($obj->event){

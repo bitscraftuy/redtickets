@@ -2689,11 +2689,11 @@ function updateCupoTalleres(){
 					for($i = 0; $i < count($talleres);$i++){
 
 						$current = (int)$talleres[$i]['cupo'];
-						$cupo = (int)($current-1);
+						$cupo = ($current == 0) ? 0 : (int)($current-1);
 						$newCupo = (string)$cupo;
 
 						$current2 = (int)$talleres[$i]['cupo2'];
-						$cupo2 = (int)($current2-1);
+						$cupo2 = ($current2 == 0) ? 0 : (int)($current2-1);
 						$newCupo2 = (string)$cupo2;
 
 						$schedule = $obj->s9;
@@ -2794,20 +2794,60 @@ function updateCupoTalleres(){
 					for($i = 0; $i < count($talleres);$i++){
 
 						$current = (int)$talleres[$i]['cupo'];
+						$current2 = (int)$talleres[$i]['cupo2'];
 						$cupo = $current-2;
+						$cupo2 = $current2-2;
+						$newCupo = (string)$cupo;
+						$newCupo2 = (string)$cupo2;
 
-						if($talleres[$i]['schedule'] == $obj->s9 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v9)))
-						
-							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo),array('schedule'=>$obj->s9,'name'=>$obj->v9),array('%s'));
+						if($talleres[$i]['schedule'] == $obj->s9 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v9))){
 
-						if($talleres[$i]['schedule'] == $obj->s11 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v11)))
-							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo),array('schedule'=>$obj->s11,'name'=>$obj->v11),array('%s'));
+							if($obj->eventDate == '2018-05-18 00:00:00'){
+								$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $newCupo),array('schedule'=>$obj->s9,'name'=>$obj->v9),array('%s'));
+								
+							}else if($obj->eventDate == '2018-05-19 00:00:00'){
 
-						if($talleres[$i]['schedule'] == $obj->s14 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v14)))
-							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo),array('schedule'=>$obj->s14,'name'=>$obj->v14),array('%s'));
+								$res = $wpdb->update('wp_ebp_talleres',array('cupo2' => $newCupo2),array('schedule'=>$obj->s9,'name'=>$obj->v9),array('%s'));
+							}
 
-						if($talleres[$i]['schedule'] == $obj->s16 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v16)))
-							$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $cupo),array('schedule'=>$obj->s16,'name'=>$obj->v16),array('%s'));
+							
+						}
+
+						if($talleres[$i]['schedule'] == $obj->s11 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v11))){
+
+							if($obj->eventDate == '2018-05-18 00:00:00'){
+								$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $newCupo),array('schedule'=>$obj->s11,'name'=>$obj->v11),array('%s'));
+								
+							}else if($obj->eventDate == '2018-05-19 00:00:00'){
+
+								$res = $wpdb->update('wp_ebp_talleres',array('cupo2' => $newCupo2),array('schedule'=>$obj->s11,'name'=>$obj->v11),array('%s'));
+							}
+
+						}
+
+						if($talleres[$i]['schedule'] == $obj->s14 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v14))){
+
+							if($obj->eventDate == '2018-05-18 00:00:00'){
+								$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $newCupo),array('schedule'=>$obj->s14,'name'=>$obj->v14),array('%s'));
+								
+							}else if($obj->eventDate == '2018-05-19 00:00:00'){
+
+								$res = $wpdb->update('wp_ebp_talleres',array('cupo2' => $newCupo2),array('schedule'=>$obj->s14,'name'=>$obj->v14),array('%s'));
+							}
+							
+						}
+
+						if($talleres[$i]['schedule'] == $obj->s16 && trim(strtolower($talleres[$i]['name'])) == trim(strtolower($obj->v16))){
+
+							if($obj->eventDate == '2018-05-18 00:00:00'){
+								$res = $wpdb->update('wp_ebp_talleres',array('cupo' => $newCupo),array('schedule'=>$obj->s16,'name'=>$obj->v16),array('%s'));
+								
+							}else if($obj->eventDate == '2018-05-19 00:00:00'){
+
+								$res = $wpdb->update('wp_ebp_talleres',array('cupo2' => $newCupo2),array('schedule'=>$obj->s16,'name'=>$obj->v16),array('%s'));
+							}
+							
+						}
 					}
 
 				break;

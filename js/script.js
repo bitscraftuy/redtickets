@@ -1612,47 +1612,8 @@ jQuery(document).ready(function(){
   });
 
 
-
-
-
-  jQuery('form.EBP--DuplicateCnt').submit(function(){
-
-  	
-
-	});
-
-  jQuery('a.Modal--BookBtn').click(function(e){
-
-e.preventDefault();
-		
-		var eventID = jQuery('input[name="eventID"]').val();  	
-		var eventName = jQuery('input[name="eventName"]').val();  	
-		var ebpMobilegPage = jQuery('input[name="ebpMobilegPage"]').val();  	
-		var totalAmount = jQuery('input[name="totalAmount"]').val();  	
-		var couponAmountUsed = jQuery('input[name="couponAmountUsed"]').val();  	
-		var totalAmountTaxed = jQuery('input[name="totalAmountTaxed"]').val();  	
-		var totalQuantity = jQuery('input[name="totalQuantity"]').val(); 
-
-
-
-		var taller9 = jQuery('input[name="TALLERES DESDE LAS 09:00 HS."]').val();
-  		var taller11 = jQuery('input[name="TALLERES DESDE LAS 11:30 HS."]').val();
-  		var taller14 = jQuery('input[name="TALLERES DESDE LAS 14:30 HS."]').val();
-  		var taller16 = jQuery('input[name="TALLERES DESDE LAS 16:30 HS."]').val();
-
-  		console.log(taller9,taller11,taller14,taller16); 	
-
-  });
-
-
 });
 
-
-jQuery("body").on('DOMSubtreeModified', "div.EBP--modal", function() {
-    //alert('changed');
-    //
-
-});
 
 
 function listar(){
@@ -1685,11 +1646,11 @@ function listar(){
 
       					if(item.innerText.toLowerCase().trim() == taller.name.toLowerCase().trim()){
 
-      						if(eventID == 4 || eventID == 6){
+      						//if(eventID == 4 || eventID == 6){
       							var newContent = '<span>'+item.innerText+' '+'('+taller.cupo+' - '+taller.cupo2+')</span>';
-      						}else{
-      							var newContent = '<span>'+item.innerText+' '+'('+taller.cupo+')</span>';
-      						}
+      						//}else{
+      							//var newContent = '<span>'+item.innerText+' '+'('+taller.cupo+')</span>';
+      						//}
 
       						
       						item.innerHTML = newContent;
